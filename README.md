@@ -1,4 +1,4 @@
-# GLUT-template
+# Ishraq's personal-use GLUT-template
 
 Simple VSCode template for GLUT projects in Linux
 
