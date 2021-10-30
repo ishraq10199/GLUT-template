@@ -1,0 +1,11 @@
+// (vscode) CTRL+SHIFT+P > KEYBOARD SHORTCUTS(JSON) > COPY & PASTE FOLLOWING 
+// 
+// [Warning] This keybind change is applied globally
+// 
+// Place your key bindings in this file to override the defaults
+[
+    { "key": "ctrl+b",          "command": "workbench.action.terminal.sendSequence",
+                                "args": { "text": "\u0003 make\n" } 
+    }
+
+]
