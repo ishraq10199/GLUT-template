@@ -1,3 +1,4 @@
+#include <GL/gl.h>
 #include <GL/glut.h>
 
 void Initialize()
@@ -33,8 +34,11 @@ int main(int iArgc, char **cppArgv)
 {
     glutInit(&iArgc, cppArgv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(960, 1040);
-    glutInitWindowPosition(959, 0);
+    unsigned int screenHeight = glutGet(GLUT_SCREEN_HEIGHT);
+    unsigned int screenWidth= glutGet(GLUT_SCREEN_WIDTH);
+
+    glutInitWindowSize(screenWidth/2, screenHeight-62);
+    glutInitWindowPosition((screenWidth/2 - 1), 0);
     glutCreateWindow("CSE_414");
     Initialize();
     glutDisplayFunc(Draw);
