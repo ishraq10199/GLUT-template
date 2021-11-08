@@ -8,7 +8,11 @@ test:
 
 
 	#for Windows only, comment this out for linux			
-	g++ ./src/test.cpp -o ./build/test -lopengl32 -lfreeglut
+	g++ ./src/test.cpp -o ./build/test -lopengl32 -lfreeglut -lGLU32
+	
+	
+	# g++ ./src/test2.cpp -o ./build/test -lopengl32 -lfreeglut -lGLU32
+
 
 
 	./build/test

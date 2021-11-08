@@ -2,16 +2,13 @@
 #include <GL/glut.h>
 #include <cmath>
 #include <iostream>
-#include "floor.h"
-#include "plant.h"
-#include "walls.h"
-#include "furniture.h"
+#include "arc.h"
 
 float ratio;
 
 void Initialize()
 {
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(0, 0, 0.1, 1);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-1, 1.0, -1, 1.0, 5.0, -5.0);
@@ -22,18 +19,8 @@ void renderScene()
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0, 0, 0.1, 1);
 
-    drawFloor();
+    draw_arc();
 
-    // glPushMatrix();
-
-    drawPlant_1();
-
-    drawWall_A();
-    drawWall_B();
-
-    drawAllFurniture();
-
-    // glPopMatrix();
     glFlush();
 }
 
@@ -53,9 +40,9 @@ int main(int iArgc, char **cppArgv)
 {
     glutInit(&iArgc, cppArgv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(1280, 720);
+    glutInitWindowSize(600, 600);
     glutInitWindowPosition(0, 0);
-    glutCreateWindow("CSE_414");
+    glutCreateWindow("TEST 2");
     Initialize();
     glutDisplayFunc(renderScene);
     // glutIdleFunc(renderScene);
