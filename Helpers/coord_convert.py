@@ -1,7 +1,5 @@
-from typing import Mapping
-
-
 import sys
+
 def convert(x, y):
     return "glVertex3f(" + str(round(((x-640)/640), 3))+ ", " + str(round(((360-y)/360), 3)) + ", 0);"
 
