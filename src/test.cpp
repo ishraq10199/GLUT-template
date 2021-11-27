@@ -6,8 +6,7 @@
 #include "plant.h"
 #include "walls.h"
 #include "furniture.h"
-
-float ratio;
+#include "outside.h"
 
 void Initialize()
 {
@@ -22,16 +21,32 @@ void renderScene()
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0, 0, 0.1, 1);
 
-    drawFloor();
-
     // glPushMatrix();
-
-    drawPlant_1();
+    drawOutside();
+    drawFloor();
 
     drawWall_A();
     drawWall_B();
-
     drawAllFurniture();
+
+    drawPlant();
+    t += 0.0001;
+    if (currentMode == NIGHT)
+    {
+        glColor4f(0, 0, 0, .7);
+        glBegin(GL_POLYGON);
+        glVertex3f(1, 1, 0);
+        glVertex3f(1, -1, 0);
+        glVertex3f(-1, -1, 0);
+        glVertex3f(-1, 1, 0);
+        glEnd();
+
+        // draw stars at night
+        draw_stars(.8, .5, 1);
+        draw_stars(.7, .5, 2);
+        draw_stars(.98, .47, 2);
+        draw_stars(.35, .6, 3);
+    }
 
     // glPopMatrix();
     glFlush();
@@ -45,8 +60,16 @@ void mouseFunc(int button, int state, int x, int y)
     float _x = ((float)x - half_window_width) / half_window_width;
     float _y = -((float)y - half_window_height) / half_window_height;
 
-    if (button == GLUT_LEFT_BUTTON)
-        std::cout << "(" << _x << ", " << _y << ")" << std::endl;
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+        std::cout << "glVertex3f(" << _x << ", " << _y << ", 0);" << std::endl;
+
+    if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+    {
+        if (currentMode == NIGHT)
+            currentMode = DAY;
+        else
+            currentMode = NIGHT;
+    }
 }
 
 int main(int iArgc, char **cppArgv)
@@ -57,8 +80,12 @@ int main(int iArgc, char **cppArgv)
     glutInitWindowPosition(0, 0);
     glutCreateWindow("CSE_414");
     Initialize();
+
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
+
     glutDisplayFunc(renderScene);
-    // glutIdleFunc(renderScene);
+    glutIdleFunc(renderScene);
 
     // THIS LINE TO ATTACH MOUSE FUNCTION TO WINDOW
     glutMouseFunc(mouseFunc);

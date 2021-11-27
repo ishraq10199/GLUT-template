@@ -11,7 +11,7 @@ test:
 	g++ ./src/test.cpp -o ./build/test -lopengl32 -lfreeglut -lGLU32
 	
 	
-	# g++ ./src/test2.cpp -o ./build/test -lopengl32 -lfreeglut -lGLU32
+	#g++ ./src/test2.cpp -o ./build/test -lopengl32 -lfreeglut -lGLU32
 
 
 

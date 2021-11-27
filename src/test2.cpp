@@ -2,7 +2,6 @@
 #include <GL/glut.h>
 #include <cmath>
 #include <iostream>
-#include "arc.h"
 
 float ratio;
 
@@ -18,8 +17,6 @@ void renderScene()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0, 0, 0.1, 1);
-
-    draw_arc();
 
     glFlush();
 }
@@ -40,7 +37,7 @@ int main(int iArgc, char **cppArgv)
 {
     glutInit(&iArgc, cppArgv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(600, 600);
+    glutInitWindowSize(1575, 951);
     glutInitWindowPosition(0, 0);
     glutCreateWindow("TEST 2");
     Initialize();
