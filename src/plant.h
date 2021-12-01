@@ -725,7 +725,8 @@ void drawPlant()
     f += 0.05;
     rtA = (5.0 * sinf(t * 1.8));
     float rtB = (2.0 * cosf(t)) + rtA;
-    glPushMatrix();
+
+        glPushMatrix();
     glTranslatef(-.13, 0, 0);
     draw_tub();
     glPushMatrix();
@@ -772,4 +773,10 @@ void drawPlant()
     glVertex3f(-0.903162, -0.663636, 0);
     glVertex3f(-0.947628, -0.670909, 0);
     glEnd();
+
+    if (currentMode == NIGHT)
+    {
+        rtA = -(8.0 * sinf(t * 3));
+        rtB = -(5.0 * cosf(t)) + rtA;
+    }
 }

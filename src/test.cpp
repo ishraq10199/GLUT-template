@@ -42,10 +42,19 @@ void renderScene()
         glEnd();
 
         // draw stars at night
+
+        glPushMatrix();
+        glScalef(0.5, 0.5, 0);
+        glTranslatef(.5, .5, 0);
+
         draw_stars(.8, .5, 1);
-        draw_stars(.7, .5, 2);
         draw_stars(.98, .47, 2);
         draw_stars(.35, .6, 3);
+        draw_stars(.2, .7, 4);
+        draw_stars(.5, .7, 5);
+        draw_stars(1.3, .5, 6);
+
+        glPopMatrix();
     }
 
     // glPopMatrix();
@@ -76,7 +85,8 @@ int main(int iArgc, char **cppArgv)
 {
     glutInit(&iArgc, cppArgv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(1280, 720);
+    // glutInitWindowSize(1280, 720);
+    glutInitWindowSize(1920, 1080);
     glutInitWindowPosition(0, 0);
     glutCreateWindow("CSE_414");
     Initialize();
